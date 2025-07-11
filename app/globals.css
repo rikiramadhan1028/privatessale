@@ -1,0 +1,68 @@
+body {
+  background: #111;
+  color: #eee;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.container {
+  background: #1e1e1e;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.2);
+}
+
+button {
+  background: #00ffcc;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+input[type="number"],
+input[type="file"],
+textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background: #222;
+  color: #fff;
+}
+
+.progress-container {
+  margin: 20px 0;
+}
+
+.progress-bar {
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 20px;
+}
+
+.progress-fill {
+  background: #00ffcc;
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.warning {
+  background: #331111;
+  color: #ff6666;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ff4444;
+  border-radius: 8px;
+  font-size: 14px;
+}
