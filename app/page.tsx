@@ -12,7 +12,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { parseEther } from 'viem';
 
 const contractAddress = '0xf9FEf2505A144a12119D9Ca3B9C662112Acd1BB3';
-const ownerAddress = '0x5ad5F9C61d3D92EbAA6bFa2aA547c678a1983373'; // Ensure this is the correct owner address
+const ownerAddress = '0x5ad5F9C61d3D92EbAA6bFa2aA547c678a1983373'; 
 const maxRaise = parseEther('10');
 
 const contractAbi = [
@@ -55,15 +55,15 @@ export default function Page() {
   const [uploadLog, setUploadLog] = useState('');
   const fileRef = useRef<HTMLInputElement>(null);
 
-  // State baru untuk menandakan apakah komponen sudah di-mount di sisi klien
+
   const [isClient, setIsClient] = useState(false);
 
-  // useEffect untuk mengatur isClient setelah komponen di-mount
+
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // totalRaised
+ 
   const { data: raised } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
@@ -71,16 +71,16 @@ export default function Page() {
     query: { refetchInterval: 1500 },
   });
 
-  // Check whitelist
-  const { data: whitelistStatus, isLoading: isWhitelistStatusLoading, error: whitelistError } = useReadContract({
+ 
+  const { data: whitelistStatus, isLoading: isWhitelistStatusLoading } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
     functionName: 'isWhitelisted',
     args: [address],
-    query: { enabled: !!address && isClient }, // Hanya enable jika di klien
+    query: { enabled: !!address && isClient }, 
   });
 
-  // Simulate contribute
+ 
   const { data: simulation, error: simulateError, isLoading: isSimulating } = useSimulateContract({
     address: contractAddress,
     abi: contractAbi,
@@ -88,7 +88,7 @@ export default function Page() {
     value: parseEther(amount || '0'),
     account: address,
     query: {
-      enabled: !!address && !!amount && (whitelisted === true) && isClient, // Hanya enable jika di klien
+      enabled: !!address && !!amount && (whitelisted === true) && isClient, 
     },
   });
 
@@ -117,9 +117,9 @@ export default function Page() {
     }
   };
 
-  // Owner & Whitelist state
+  
   useEffect(() => {
-    if (!address || !isClient) { // Pastikan hanya berjalan di klien
+    if (!address || !isClient) { 
       console.log("No wallet connected or not yet on client side.");
       setIsOwner(false);
       setWhitelisted(false);
@@ -142,16 +142,16 @@ export default function Page() {
       console.log("Whitelist status still loading or not available.");
       setWhitelisted(null);
     }
-  }, [address, whitelistStatus, isClient]); // Tambahkan isClient sebagai dependensi
+  }, [address, whitelistStatus, isClient]); 
 
-  // Debugging simulateError
+  
   useEffect(() => {
     if (simulateError) {
       console.error("Simulation Error:", simulateError);
     }
   }, [simulateError]);
 
-  // Upload CSV Logic
+ 
   const handleCSV = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) {
@@ -207,7 +207,7 @@ export default function Page() {
 
       <h1>🔒 Private Presale</h1>
 
-      {/* Konten yang bergantung pada koneksi dompet hanya akan dirender setelah "hydration" */}
+
       {isClient && isConnected ? (
         <>
           <p><strong>Wallet:</strong> {address}</p>
@@ -248,11 +248,11 @@ export default function Page() {
           {simulateError && <p style={{ color: 'red' }}>Simulation Error: {simulateError.message || 'An error occurred.'}</p>}
         </>
       ) : (
-        // Ini adalah konten fallback yang akan selalu dirender di server dan di klien pada awalnya
+        
         <p>Please connect your wallet to continue.</p>
       )}
 
-      {/* Admin Panel juga hanya akan dirender setelah isClient true dan user adalah owner */}
+      
       {isClient && isOwner && (
         <div style={{ marginTop: '2rem' }}>
           ---

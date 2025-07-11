@@ -9,9 +9,9 @@ import {
   RainbowKitProvider
 } from '@rainbow-me/rainbowkit';
 
-import { WagmiProvider } from 'wagmi';
+import { http, WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { createConfig, http } from 'wagmi';
+
 import { Chain } from 'wagmi/chains';
 
 // 🔧 HOLESKY config

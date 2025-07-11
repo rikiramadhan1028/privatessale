@@ -347,7 +347,7 @@ export default function Page() {
     abi: contractAbi,
     functionName: 'isWhitelisted',
     args: [address],
-    query: { enabled: !!address && isClient }, // Hanya enable jika di klien
+    query: { enabled: !!address && isClient },
   });
 
   // Simulate contribute
@@ -389,7 +389,7 @@ export default function Page() {
 
   // Owner & Whitelist state
   useEffect(() => {
-    if (!address || !isClient) { // Pastikan hanya berjalan di klien
+    if (!address || !isClient) { 
       console.log("No wallet connected or not yet on client side.");
       setIsOwner(false);
       setWhitelisted(false);
@@ -412,16 +412,16 @@ export default function Page() {
       console.log("Whitelist status still loading or not available.");
       setWhitelisted(null);
     }
-  }, [address, whitelistStatus, isClient]); // Tambahkan isClient sebagai dependensi
+  }, [address, whitelistStatus, isClient]); 
 
-  // Debugging simulateError
+  
   useEffect(() => {
     if (simulateError) {
       console.error("Simulation Error:", simulateError);
     }
   }, [simulateError]);
 
-  // Upload CSV Logic
+  
   const handleCSV = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) {
@@ -518,11 +518,11 @@ export default function Page() {
           {simulateError && <p style={{ color: 'red' }}>Simulation Error: {simulateError.message || 'An error occurred.'}</p>}
         </>
       ) : (
-        // Ini adalah konten fallback yang akan selalu dirender di server dan di klien pada awalnya
+        
         <p>Please connect your wallet to continue.</p>
       )}
 
-      {/* Admin Panel juga hanya akan dirender setelah isClient true dan user adalah owner */}
+      
       {isClient && isOwner && (
         <div style={{ marginTop: '2rem' }}>
           ---
