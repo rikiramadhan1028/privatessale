@@ -113,7 +113,7 @@ export default function Page() {
       alert('✅ Contribution successful!');
     } catch (err) {
       console.error("Transaction error:", err);
-      alert('❌ Transaction failed. Check console for details.');
+      alert('❌ Transaction failed.');
     }
   };
 

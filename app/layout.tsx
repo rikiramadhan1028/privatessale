@@ -35,7 +35,7 @@ const holesky: Chain = {
 
 // 🔧 Konfigurasi RainbowKit dan Wagmi
 const config = getDefaultConfig({
-  appName: 'Chito Presale dApp',
+  appName: 'Presale dApp',
   projectId: '063ec8f564f53c52972e659901652592', 
   chains: [holesky],
   transports: {
@@ -48,6 +48,9 @@ const queryClient = new QueryClient();
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+      </head>
       <body>
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
